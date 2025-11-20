@@ -2,7 +2,7 @@ import { PortableTextBlock } from "@portabletext/types";
 
 export interface Image {
   _type?: "image";
-  asset: { _ref?: string; _id?: string; _type?: "reference" };
+  asset: { _ref: string; _type: "reference" };
   alt?: string;
 }
 
@@ -17,5 +17,5 @@ export interface FullBlog {
   currentSlug: string;
   title: string;
   content: PortableTextBlock[];
-  titleImage: Image;
+  titleImage?: Image;
 }

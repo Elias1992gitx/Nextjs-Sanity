@@ -1,5 +1,5 @@
 import { client, urlFor } from "@/app/lib/sanity";
-import { fullBlog } from "@/app/lib/interface";
+import { FullBlog } from "@/app/lib/interface";
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 
@@ -20,7 +20,7 @@ export default async function BlogArticle(props: {
 }) {
   const { slug } = await props.params;
 
-  const data: fullBlog = await getData(slug);
+  const data: FullBlog = await getData(slug);
 
   return (
     <div className="mt-6">
@@ -34,14 +34,27 @@ export default async function BlogArticle(props: {
         </span>
       </h1>
 
-      <Image
+      {data.titleImage && (
+        <Image
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+          src={urlFor(data.titleImage as any).url()}
+          alt={data.titleImage?.alt || "Blog image"}
+          width={800}
+          height={800}
+          priority
+          className="rounded-lg mt-8 border"
+        />
+      )}
+
+      {/* <Image
         src={urlFor(data.titleImage).url()}
         alt="title image"
         width={800}
         height={800}
         priority
         className="rounded-lg mt-8 border"
-      />
+      /> */}
 
       <div className="mt-16 prose prose-blue prose-xl dark:prose-invert prose-li:marker:text-primary prose-a:text-primary">
         <PortableText value={data.content} />
