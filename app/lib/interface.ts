@@ -10,7 +10,8 @@ export interface SimpleBlogCard {
   title: string;
   smallDescription: string;
   currentSlug: string;
-  titleImage: Image;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  titleImage: any;
 }
 
 export interface FullBlog {
