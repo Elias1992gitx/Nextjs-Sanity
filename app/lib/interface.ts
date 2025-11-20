@@ -17,5 +17,6 @@ export interface FullBlog {
   currentSlug: string;
   title: string;
   content: PortableTextBlock[];
-  titleImage?: Image;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  titleImage: any;
 }
