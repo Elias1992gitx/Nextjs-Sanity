@@ -1,14 +1,21 @@
-export interface simpleBlogCard {
+import { PortableTextBlock } from "@portabletext/types";
+
+export interface Image {
+  _type?: "image";
+  asset: { _ref?: string; _id?: string; _type?: "reference" };
+  alt?: string;
+}
+
+export interface SimpleBlogCard {
   title: string;
   smallDescription: string;
   currentSlug: string;
-  titleImage: any;
+  titleImage: Image;
 }
 
-
-export interface fullBlog {
+export interface FullBlog {
   currentSlug: string;
   title: string;
-  content: any;
-  titleImage: any;
+  content: PortableTextBlock[];
+  titleImage: Image;
 }
